@@ -5,7 +5,7 @@
 	run;
 %mend save_as_csv;
 
-%macro save_files_as_csv(start=, end=, lib=); *for defining function with default parameters (start=1, end=5,....);
+%macro save_files_as_csv(start=, end=, lib=);
 	proc sql;
 		select memname into :tables_names separated by ' '
 		from dictionary.tables;
@@ -18,6 +18,6 @@
 		%put &=curr;		
 		%save_as_csv(folder='/folders/folders/@myFolder', table=&curr., caslib=&lib.)
 	%end;
-%ment save_files_as_csv;
+%mend save_files_as_csv;
 	
 save_files_as_csv(start=10, end=15, lib=SASHELP);
